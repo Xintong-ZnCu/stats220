@@ -20,4 +20,4 @@ The course of statistics *I have taken*:
 My major is Data Science. Here is the introduction:
 [Data Science at UOA](https://www.auckland.ac.nz/en/study/study-options/find-a-study-option/data-science/undergraduate/bsc-data-science-from-2019.html)
 
-A meme that captures how I currently feel about my university studies is ![](https://media1.tenor.com/m/ORjIbMemSFMAAAAd/ggg.gif)
+A meme that captures I'm glad to meet you all  is ![](https://media1.tenor.com/m/ORjIbMemSFMAAAAd/ggg.gif)
