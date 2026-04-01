@@ -1,0 +1,80 @@
+---
+title: My dynamic report
+output: html_fragment
+---
+
+<meta charset="UTF-8">
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, message=FALSE, warning=FALSE, error=FALSE)
+
+```
+
+```{css}
+
+```
+
+## Outfit of the Day (OOTD) Survey Analysis
+
+This report analyses observational data on people's outfits, focusing on style and colour patterns.
+
+
+```{r}
+
+library(tidyverse)
+logged_data <- read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vQwa0KzvNwSWYPl_38eGjV2nEKcNmP01lBnoxPvLINw8vjhkAhWC7uwwf1OPoGCxLVVDyxESMxic4nO/pub?output=csv")
+
+latest_data <- logged_data %>%
+  rename(
+    timestamp = Timestamp,
+    main_color = `What is the main color of your OOTD?
+你的OOTD的主要颜色是什么？`,
+    style = `What is the overall style of your OOTD?
+你的OOTD的整体风格是什么？`,
+    num_colors = `How many colors are there in your OOTD?
+你的OOTD里有多少种颜色？`
+  )
+
+
+```
+
+```{r}
+mean_colors <- mean(latest_data$num_colors, na.rm = TRUE)
+
+max_colors <- max(latest_data$num_colors, na.rm = TRUE)
+
+min_colors <- min(latest_data$num_colors, na.rm = TRUE)
+
+total_observation <- nrow(latest_data)
+
+```
+The average number of colors in an outfit across all observations is **`r round(mean_colors, 2)`**.
+
+The maximum number of colors observed in one suit is **`r max_colors`**.
+
+The minimum number of colors observed in one suit is **`r min_colors`**.
+
+The total number of observations in the dataset is **`r total_observation`**.
+
+
+```{r}
+# plot 1
+ggplot(latest_data, aes(x = style)) + 
+  geom_bar() +
+  labs(
+    title = "Distribution of Outfit Styles",
+    x = "Style",
+    y = "Count"
+  )
+
+# plot 2
+ggplot(latest_data, aes(x = main_color)) +
+  geom_bar() +
+  labs(
+    title = "Distribution of Main Colors",
+    x = "Main Color",
+    y = "Count"
+  )
+
+```
+
